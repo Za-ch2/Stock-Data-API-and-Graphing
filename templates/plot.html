@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Prices Plot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+          <h1>Stock Prices Plot</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          {{ plot_html|safe }}
+        </div>
+        <div class="col-md-4 mx-auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Average Closing Prices (1-year)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for index, row in avg_prices.iterrows() %}
+                <tr>
+                  <td>{{ row['Ticker'] }}</td>
+                  <td>{{ '{:.2f}'.format(row['Average Closing Prices (1-year)']) }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
